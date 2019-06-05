@@ -18,7 +18,7 @@ class SearchForm extends React.Component {
 
   render() {
     const fruitItems = this.filterFruits().map(fruit => (
-      <Item fruitName={fruit.type} fruitEmoji={fruit.emoji} />
+      <Item fruitName={fruit.type} fruitEmoji={fruit.emoji} key={fruit.id} />
     ));
 
     return (
@@ -35,7 +35,7 @@ class SearchForm extends React.Component {
   }
 }
 
-const Item = ({ fruitName, fruitEmoji }) => <li>{fruitEmoji} {fruitName}</li>;
+const Item = ({ fruitName, fruitEmoji, fruitId }) => <li key={fruitId}>{fruitEmoji} {fruitName}</li>;
 
 const element = <SearchForm />;
 const container = document.getElementById("app");
