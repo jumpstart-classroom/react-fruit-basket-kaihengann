@@ -7,9 +7,35 @@
 h1 {
   text-align: center;
   margin: 2rem;
+  font-size: 3rem;
 }
 
 #app {
   text-align: center;
   margin: 2rem;
+  align-items: left;
+}
+
+#container {
+  margin: 0 150px;
+}
+#container input {
+  width: 90%;
+  border-style: none;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+#container input:focus {
+  outline: none;
+}
+
+#container ul {
+  margin: 2rem;
+  list-style: none;
+  font-size: 2rem;
+  text-align: left;
+}
+#container ul li{
+  padding: 1rem;
 }
