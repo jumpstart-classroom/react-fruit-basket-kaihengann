@@ -1,17 +1,17 @@
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", fruits: [] };
+    this.state = { input: "", fruits: [] };
   }
 
   // On user input, set form value to SearchForm state
   handleChange = e => {
-    this.setState({ value: e.target.value });
+    this.setState({ input: e.target.value });
   };
 
   // Returns array of filtered fruits after user input
   filterFruits = () => {
-    let userInput = this.state.value.toLowerCase();
+    let userInput = this.state.input.toLowerCase();
     return this.state.fruits.filter(fruit => fruit.type.includes(userInput));
   };
 
@@ -30,7 +30,7 @@ class SearchForm extends React.Component {
 
   render() {
     const fruitItems = this.filterFruits().map(fruit => (
-      <Item fruitName={fruit.type} fruitEmoji={fruit.emoji} key={fruit.id} />
+      <FruitItem fruitName={fruit.type} fruitEmoji={fruit.emoji} key={fruit.id} />
     ));
 
     return (
@@ -38,7 +38,7 @@ class SearchForm extends React.Component {
         <input
           type="text"
           onChange={this.handleChange}
-          value={this.state.value}
+          value={this.state.input}
           placeholder=" > Enter a fruit"
         />
         <ul>{fruitItems}</ul>
@@ -47,7 +47,7 @@ class SearchForm extends React.Component {
   }
 }
 
-const Item = ({ fruitName, fruitEmoji, fruitId }) => (
+const FruitItem = ({ fruitName, fruitEmoji, fruitId }) => (
   <li key={fruitId}>
     {fruitEmoji} {fruitName}
   </li>
