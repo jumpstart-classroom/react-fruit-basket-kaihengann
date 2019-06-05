@@ -4,18 +4,16 @@ class FruitBasket extends React.Component {
     this.state = { input: "", fruits: [] };
   }
 
-  // On user input, set form value to SearchForm state
-  handleChange = e => {
-    this.setState({ input: e.target.value });
-  };
+  // Event listener for user input and set input state
+  handleChange = e => this.setState({ input: e.target.value });
 
-  // Returns array of filtered fruits after user input
+  // Filters fruits according to user input
   filterFruits = () => {
     let userInput = this.state.input.toLowerCase();
     return this.state.fruits.filter(fruit => fruit.type.includes(userInput));
   };
 
-  // Fetch data
+  // Fetch fruits data
   componentDidMount = async () => {
     try {
       const response = await fetch(
@@ -29,7 +27,9 @@ class FruitBasket extends React.Component {
   };
 
   render() {
-    const fruitItems = this.filterFruits().map(fruit => (
+    // Creates react elements with filtered fruit items
+    const filteredFruits = this.filterFruits();
+    const fruitItems = filteredFruits.map(fruit => (
       <FruitItem
         fruitName={fruit.type}
         fruitEmoji={fruit.emoji}
