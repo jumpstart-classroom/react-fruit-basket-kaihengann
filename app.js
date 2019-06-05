@@ -6,14 +6,14 @@ class SearchForm extends React.Component {
     this.state = { value: '' }
   }
 
-  handleChange() {
-
+  handleChange = e => {
+    this.setState({ value: e.target.value });
   }
 
   render() {
     return (
       <div id='container'>
-        <input type='text' onChange={this.handleChange()} placeholder='Enter a fruit' />
+        <input type='text' onChange={this.handleChange} value={this.state.value} placeholder='Enter a fruit' />
       </div>
     )
   }
