@@ -17,8 +17,8 @@ class SearchForm extends React.Component {
   
   render() {
     
-    const fruitItems = this.filterFruits().map(fruitName => (
-      <Item fruitName={fruitName.type} />
+    const fruitItems = this.filterFruits().map(fruit => (
+      <Item fruitName={fruit.type} />
     ));
 
     return (
@@ -43,7 +43,7 @@ const container = document.getElementById("app");
 fetch('https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits')
   .then(res => res.json())
   .then(data => {
-    fruits = JSON.parse(JSON.stringify(data));
-    console.log(fruits)
+    let dataString = JSON.stringify(data);
+    fruits = JSON.parse(dataString);
     ReactDOM.render(element, container);
   })
