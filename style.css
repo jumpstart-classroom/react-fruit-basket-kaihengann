@@ -31,9 +31,6 @@ h1 {
   padding: 10px;
 }
 
-#container input:focus {
-  outline: none;
-}
 
 #container ul {
   min-width: 200px;
@@ -45,6 +42,10 @@ h1 {
 
 #container ul li {
   padding: 1rem 0;
+}
+
+:focus {
+  outline: none;
 }
 
 @media only screen and (max-width: 720px) {
