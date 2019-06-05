@@ -1,4 +1,4 @@
-class SearchForm extends React.Component {
+class FruitBasket extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: "", fruits: [] };
@@ -30,22 +30,29 @@ class SearchForm extends React.Component {
 
   render() {
     const fruitItems = this.filterFruits().map(fruit => (
-      <FruitItem fruitName={fruit.type} fruitEmoji={fruit.emoji} key={fruit.id} />
+      <FruitItem
+        fruitName={fruit.type}
+        fruitEmoji={fruit.emoji}
+        key={fruit.id}
+      />
     ));
 
     return (
       <div id="container">
-        <input
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.input}
-          placeholder=" > Enter a fruit"
-        />
+        <SearchForm input={this.handleChange} />
         <ul>{fruitItems}</ul>
       </div>
     );
   }
 }
+
+const SearchForm = ({ input }) => (
+  <input
+    type="text"
+    onChange={input}
+    placeholder=" > Enter a fruit"
+  />
+);
 
 const FruitItem = ({ fruitName, fruitEmoji, fruitId }) => (
   <li key={fruitId}>
@@ -53,7 +60,7 @@ const FruitItem = ({ fruitName, fruitEmoji, fruitId }) => (
   </li>
 );
 
-const element = <SearchForm />;
+const element = <FruitBasket />;
 const container = document.getElementById("app");
 
 ReactDOM.render(element, container);
