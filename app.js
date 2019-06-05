@@ -12,7 +12,8 @@ class SearchForm extends React.Component {
 
   // Returns array of filtered fruits after user input
   filterFruits = () => {
-    return fruits.filter(fruit => fruit.type.includes(this.state.value));
+    let userInput = this.state.value.toLowerCase();
+    return fruits.filter(fruit => fruit.type.includes(userInput));
   };
 
   render() {
