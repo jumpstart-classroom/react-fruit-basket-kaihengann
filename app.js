@@ -6,8 +6,14 @@ class SearchForm extends React.Component {
     this.state = { value: '' }
   }
 
+  // On user input, set form value to SearchForm state
   handleChange = e => {
     this.setState({ value: e.target.value });
+  }
+
+  // Returns array of filtered items after user input
+  filterItems = () => {
+    return fruits.filter((fruit) => fruit.includes(this.state.value))
   }
 
   render() {
