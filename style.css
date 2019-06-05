@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+body {
+  max-width: 1800px;
+}
+
 h1 {
   text-align: center;
   margin: 2rem;
@@ -19,8 +23,9 @@ h1 {
 #container {
   margin: 0 150px;
 }
+
 #container input {
-  width: 90%;
+  width: 100%;
   border-style: none;
   border-bottom: 1px solid black;
   padding: 10px;
@@ -31,11 +36,19 @@ h1 {
 }
 
 #container ul {
+  min-width: 200px;
   margin: 2rem;
   list-style: none;
   font-size: 2rem;
   text-align: left;
 }
-#container ul li{
-  padding: 1rem;
+
+#container ul li {
+  padding: 1rem 0;
+}
+
+@media only screen and (max-width: 720px) {
+  #container {
+    margin: 0 20px;
+  }
 }
