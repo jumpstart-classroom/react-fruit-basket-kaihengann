@@ -4,21 +4,20 @@ class SearchForm extends React.Component {
     super(props);
     this.state = { value: "" };
   }
-  
+
   // On user input, set form value to SearchForm state
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
-  
+
   // Returns array of filtered fruits after user input
   filterFruits = () => {
     return fruits.filter(fruit => fruit.type.includes(this.state.value));
   };
-  
+
   render() {
-    
     const fruitItems = this.filterFruits().map(fruit => (
-      <Item fruitName={fruit.type} />
+      <Item fruitName={fruit.type} fruitEmoji={fruit.emoji} />
     ));
 
     return (
@@ -35,15 +34,15 @@ class SearchForm extends React.Component {
   }
 }
 
-const Item = ({ fruitName }) => <li>{fruitName}</li>;
+const Item = ({ fruitName, fruitEmoji }) => <li>{fruitEmoji} {fruitName}</li>;
 
 const element = <SearchForm />;
 const container = document.getElementById("app");
 
-fetch('https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits')
+fetch("https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits")
   .then(res => res.json())
   .then(data => {
     let dataString = JSON.stringify(data);
     fruits = JSON.parse(dataString);
     ReactDOM.render(element, container);
-  })
+  });
