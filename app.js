@@ -1,7 +1,7 @@
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" , fruits: [] };
+    this.state = { value: "", fruits: [] };
   }
 
   // On user input, set form value to SearchForm state
@@ -17,11 +17,17 @@ class SearchForm extends React.Component {
 
   // Fetch data
   componentDidMount = async () => {
-    const response = await fetch("https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits");
-    const json = await response.json();
-    this.setState({ fruits: json })
-  }
-  
+    try {
+      const response = await fetch(
+        "https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits"
+      );
+      const json = await response.json();
+      this.setState({ fruits: json });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   render() {
     const fruitItems = this.filterFruits().map(fruit => (
       <Item fruitName={fruit.type} fruitEmoji={fruit.emoji} key={fruit.id} />
@@ -41,7 +47,11 @@ class SearchForm extends React.Component {
   }
 }
 
-const Item = ({ fruitName, fruitEmoji, fruitId }) => <li key={fruitId}>{fruitEmoji} {fruitName}</li>;
+const Item = ({ fruitName, fruitEmoji, fruitId }) => (
+  <li key={fruitId}>
+    {fruitEmoji} {fruitName}
+  </li>
+);
 
 const element = <SearchForm />;
 const container = document.getElementById("app");
