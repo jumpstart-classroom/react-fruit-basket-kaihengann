@@ -11,18 +11,29 @@ class SearchForm extends React.Component {
     this.setState({ value: e.target.value });
   }
 
-  // Returns array of filtered items after user input
-  filterItems = () => {
+  // Returns array of filtered fruits after user input
+  filterFruits = () => {
     return fruits.filter((fruit) => fruit.includes(this.state.value))
   }
 
   render() {
+    const fruitItems = this.filterFruits().map((fruitName) => {
+      return <Item fruitName={fruitName} />
+    });
+
     return (
       <div id='container'>
         <input type='text' onChange={this.handleChange} value={this.state.value} placeholder='Enter a fruit' />
+        <ul>
+          {fruitItems}
+        </ul>
       </div>
     )
   }
+}
+
+function Item({fruitName}) {
+  return <li>{fruitName}</li>
 }
 
 const element = <SearchForm />
