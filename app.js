@@ -1,24 +1,24 @@
-const fruits = ["apple", "oranges", "mangos", "watermelon"];
-
+let fruits;
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: "" };
   }
-
+  
   // On user input, set form value to SearchForm state
   handleChange = e => {
     this.setState({ value: e.target.value });
   };
-
+  
   // Returns array of filtered fruits after user input
   filterFruits = () => {
-    return fruits.filter(fruit => fruit.includes(this.state.value));
+    return fruits.filter(fruit => fruit.type.includes(this.state.value));
   };
-
+  
   render() {
+    
     const fruitItems = this.filterFruits().map(fruitName => (
-      <Item fruitName={fruitName} />
+      <Item fruitName={fruitName.type} />
     ));
 
     return (
@@ -27,7 +27,7 @@ class SearchForm extends React.Component {
           type="text"
           onChange={this.handleChange}
           value={this.state.value}
-          placeholder="Enter a fruit"
+          placeholder=" > Enter a fruit"
         />
         <ul>{fruitItems}</ul>
       </div>
@@ -40,4 +40,10 @@ const Item = ({ fruitName }) => <li>{fruitName}</li>;
 const element = <SearchForm />;
 const container = document.getElementById("app");
 
-ReactDOM.render(element, container);
+fetch('https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits')
+  .then(res => res.json())
+  .then(data => {
+    fruits = JSON.parse(JSON.stringify(data));
+    console.log(fruits)
+    ReactDOM.render(element, container);
+  })
