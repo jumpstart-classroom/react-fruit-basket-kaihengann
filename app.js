@@ -4,10 +4,10 @@ class FruitBasket extends React.Component {
     this.state = { input: "", fruits: [] };
   }
 
-  // Event listener for user input and set input state
+  // Listen for user input and set input state
   handleChange = e => this.setState({ input: e.target.value });
 
-  // Filters fruits according to user input
+  // Filter fruits according to user input
   filterFruits = () => {
     const userInput = this.state.input.toLowerCase();
     const fruitsArray = this.state.fruits;
@@ -27,7 +27,7 @@ class FruitBasket extends React.Component {
   };
 
   render() {
-    // Creates react elements with filtered fruit items
+    // Create react elements with filtered fruit items
     const filteredFruits = this.filterFruits();
     const fruitItems = filteredFruits.map(fruit => (
       <FruitItem
