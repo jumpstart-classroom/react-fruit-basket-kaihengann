@@ -21,8 +21,8 @@ class FruitBasket extends React.Component {
         "https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits/";
       const response = await fetch(url);
       if (!response.ok) throw new Error("Fruits can't be found!"); // Can also use response.status >= 400
-      const json = await response.json();
-      this.setState({ fruits: json });
+      const fruits = await response.json();
+      this.setState({ fruits: fruits });
     } catch (err) {
       console.log(err);
     }
