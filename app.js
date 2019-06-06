@@ -16,11 +16,16 @@ class FruitBasket extends React.Component {
 
   // Fetch fruits data
   componentDidMount = async () => {
-    const url = "https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits/"
-    const response = await fetch(url);
-    if (response.status !== 200) return [];
-    const json = await response.json();
-    this.setState({ fruits: json });
+    try {
+      const url =
+        "https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits/";
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Fruits can't be found!"); // Can also use response.status >= 400
+      const json = await response.json();
+      this.setState({ fruits: json });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   render() {
@@ -44,11 +49,7 @@ class FruitBasket extends React.Component {
 }
 
 const SearchForm = ({ input }) => (
-  <input
-    type="text"
-    onChange={input}
-    placeholder=" > Enter a fruit"
-  />
+  <input type="text" onChange={input} placeholder=" > Enter a fruit" />
 );
 
 const FruitItem = ({ fruitName, fruitEmoji, fruitId }) => (
