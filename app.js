@@ -9,16 +9,16 @@ class FruitBasket extends React.Component {
 
   // Filters fruits according to user input
   filterFruits = () => {
-    let userInput = this.state.input.toLowerCase();
-    return this.state.fruits.filter(fruit => fruit.type.includes(userInput));
+    const userInput = this.state.input.toLowerCase();
+    const fruitsArray = this.state.fruits;
+    return fruitsArray.filter(fruit => fruit.type.includes(userInput));
   };
 
   // Fetch fruits data
   componentDidMount = async () => {
     try {
-      const response = await fetch(
-        "https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits"
-      );
+      const url = "https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits"
+      const response = await fetch(url);
       const json = await response.json();
       this.setState({ fruits: json });
     } catch (err) {
