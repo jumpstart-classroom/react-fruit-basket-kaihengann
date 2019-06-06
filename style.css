@@ -21,13 +21,10 @@ h1 {
   text-align: center;
   margin: 2rem;
   align-items: left;
-}
-
-#container {
   margin: 0 150px;
 }
 
-#container input {
+input {
   width: 100%;
   border-style: none;
   border-bottom: 2px solid black;
@@ -36,7 +33,7 @@ h1 {
   font-weight: 200;
 }
 
-#container ul {
+ul {
   min-width: 200px;
   margin: 2rem;
   list-style: none;
@@ -44,7 +41,7 @@ h1 {
   text-align: left;
 }
 
-#container ul li {
+ul li {
   padding: 1rem 0;
   text-transform: capitalize;
 }
@@ -54,7 +51,7 @@ h1 {
 }
 
 @media only screen and (max-width: 720px) {
-  #container {
-    margin: 0 20px;
+  #app {
+    margin: 0 30px;
   }
 }
