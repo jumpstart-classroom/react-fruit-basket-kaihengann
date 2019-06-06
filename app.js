@@ -38,10 +38,10 @@ class FruitBasket extends React.Component {
     ));
 
     return (
-      <div id="container">
+      <React.Fragment>
         <SearchForm input={this.handleChange} />
         <ul>{fruitItems}</ul>
-      </div>
+      </React.Fragment>
     );
   }
 }
