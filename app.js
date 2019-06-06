@@ -16,14 +16,11 @@ class FruitBasket extends React.Component {
 
   // Fetch fruits data
   componentDidMount = async () => {
-    try {
-      const url = "https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits"
-      const response = await fetch(url);
-      const json = await response.json();
-      this.setState({ fruits: json });
-    } catch (err) {
-      console.log(err);
-    }
+    const url = "https://my-json-server.typicode.com/thoughtworks-jumpstart/api/fruits/"
+    const response = await fetch(url);
+    if (response.status !== 200) return [];
+    const json = await response.json();
+    this.setState({ fruits: json });
   };
 
   render() {
