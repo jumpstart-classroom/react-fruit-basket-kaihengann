@@ -12,6 +12,7 @@ h1 {
   text-align: center;
   margin: 2rem 1rem;
   font-size: 3rem;
+  font-weight: 200;
 }
 
 #app {
@@ -43,6 +44,7 @@ h1 {
 
 #container ul li {
   padding: 1rem 0;
+  text-transform: capitalize;
 }
 
 :focus {
